@@ -1,6 +1,7 @@
 package com.mshop.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,17 +20,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user_roles")
-public class UserRole implements Serializable{
+@Table(name = "orders")
+public class Order implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Double amount;
+	private String address;
+	private String phone;
+	private Date orderDate;
+	private int status;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@ManyToOne()
-	@JoinColumn(name = "role_id")
-	private AppRole roles;
 }
